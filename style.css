@@ -1,82 +1,168 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    
 }
-.hero{
+
+.hero {
     background-color: rgba(128, 128, 128, 0.24);
     width: 100%;
     height: 100vh;
+    position: relative;
+    overflow: hidden;
 }
-nav{
+
+nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-top: 45px;
     padding-left: 8%;
     padding-right: 8%;
+    z-index: 1; /* Ensure nav is above other content */
 }
+
 nav img {
     width: 90px;
 }
-nav ul li{
-    list-style: none;
-    display: inline-block;
-    padding: 10px 25px;
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 20px; /* Adds space between the nav items */
 }
-nav ul li a{
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
     text-decoration: none;
     color: #fff;
-    font-weight: 700px;
+    font-weight: 700;
+    font-size: 18px;
+    transition: color 0.3s ease;
 }
-.content{
+
+nav ul li a:hover {
+    color: #ddd; /* Changes color on hover for better UX */
+}
+
+.content {
     align-items: center;
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
-    
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
-.content h1{
+
+.content h1 {
     color: #fff;
-    font-size: 120px;
-    font-weight: 600px;
+    font-size: 10vw; /* Adjust font size based on viewport width */
+    font-weight: 600;
     transition: 0.5s;
 }
-.content h1:hover{
+
+.content h1:hover {
     -webkit-text-stroke: 2px #fff;
     color: transparent;
 }
-.content a{
+
+.content a {
     text-decoration: none;
     color: #fff;
-    font-weight: 700px;
+    font-weight: 700;
     border: 2px solid #fff;
-    padding: 20px 35px;
+    padding: 15px 30px; /* Adjust padding for better responsiveness */
     border-radius: 30px;
-    font-size: 20px;
-}
-.back-video{
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
+    font-size: 1.2rem; /* Adjust font size for better readability */
+    transition: background-color 0.3s ease;
 }
 
-@media (min-aspect-ratio: 16/9){
-    .back-video{
+.content a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Add hover effect */
+}
+
+.back-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: auto;
+    min-height: 100%;
+    min-width: 100%;
+    z-index: -1;
+    object-fit: cover; /* Ensures the video covers the entire area without distortion */
+    object-position: center; /* Keeps the focus on the center of the video */
+}
+
+@media (min-aspect-ratio: 16/9) {
+    .back-video {
         width: 100%;
-        height: auto;   
+        height: auto;
     }
 }
-@media (max-aspect-ratio: 16/9){
-    .back-video{
+
+@media (max-aspect-ratio: 16/9) {
+    .back-video {
         width: auto;
         height: 100%;
     }
 }
 
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px; /* Adds space between the nav items on mobile */
+    }
+
+    nav img {
+        width: 70px; /* Adjust logo size for smaller screens */
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li a {
+        font-size: 1.2rem; /* Adjust text size for smaller screens */
+        padding: 10px 0; /* Add padding to avoid text getting cut off */
+    }
+
+    .content h1 {
+        font-size: 12vw; /* Make the heading size flexible on smaller screens */
+    }
+
+    .content a {
+        padding: 12px 25px; /* Adjust padding for better readability */
+        font-size: 1rem;
+    }
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+    nav img {
+        width: 60px; /* Further adjust logo size for very small screens */
+    }
+
+    .content h1 {
+        font-size: 15vw; /* Make the heading size even more flexible */
+    }
+
+    .content a {
+        padding: 10px 20px; /* Further adjust padding */
+        font-size: 0.9rem;
+    }
+
+    .back-video {
+        object-position: center center; /* Keep video content centered on small screens */
+    }
+}
